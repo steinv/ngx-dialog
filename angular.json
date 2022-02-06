@@ -69,6 +69,7 @@
           },
           "configurations": {
             "production": {
+              "baseHref": "/ngx-dialog/dist/demo/",
               "budgets": [
                 {
                   "type": "initial",

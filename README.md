@@ -2,7 +2,7 @@
 
 Angular dialog module to inject dialog component(s) with input and output
 
-## [Demo](https://steinv.github.io/ngx-dialog/dist/demo)
+## [Demo](https://steinv.github.io/ngx-dialog/dist/demo/)
 
 ## Installation
 
