@@ -14,15 +14,15 @@ export class NgxDialogService {
   constructor(private overlay: Overlay, private injector: Injector) { }
 
   // Overloading methods
-  open<O, I = undefined>(component: ComponentType<NgxDialogViewComponent<O, I>>): NgxDialogController<O, I>;
-  open<O, I = undefined>(component: ComponentType<NgxDialogViewComponent<O, I>>, inputData: I): NgxDialogController<O, I>;
-  open<O, I = undefined>(component: ComponentType<NgxDialogViewComponent<O, I>>, config: OverlayConfig): NgxDialogController<O, I>;
-  open<O, I = undefined>(component: ComponentType<NgxDialogViewComponent<O, I>>, inputData: I, config: OverlayConfig): NgxDialogController<O, I>;
+  open<OUTPUT, INPUT = undefined>(component: ComponentType<NgxDialogViewComponent<OUTPUT, INPUT>>): NgxDialogController<OUTPUT, INPUT>;
+  open<OUTPUT, INPUT = undefined>(component: ComponentType<NgxDialogViewComponent<OUTPUT, INPUT>>, inputData: INPUT): NgxDialogController<OUTPUT, INPUT>;
+  open<OUTPUT, INPUT = undefined>(component: ComponentType<NgxDialogViewComponent<OUTPUT, INPUT>>, config: OverlayConfig): NgxDialogController<OUTPUT, INPUT>;
+  open<OUTPUT, INPUT = undefined>(component: ComponentType<NgxDialogViewComponent<OUTPUT, INPUT>>, inputData: INPUT, config: OverlayConfig): NgxDialogController<OUTPUT, INPUT>;
 
   /**
    * Implementation to open a custom component in an overlay
    */
-  open<O, I = undefined>(component: ComponentType<NgxDialogViewComponent<O, I>>, inputData?: I, config?: OverlayConfig): NgxDialogController<O, I> {
+  open<OUTPUT, INPUT = undefined>(component: ComponentType<NgxDialogViewComponent<OUTPUT, INPUT>>, inputData?: INPUT, config?: OverlayConfig): NgxDialogController<OUTPUT, INPUT> {
     if (!config) {
       // Default config: globally centered position strategy
       const positionStrategy = this.overlay
@@ -45,7 +45,7 @@ export class NgxDialogService {
 
     
     // Create injector to be able to reference the DialogController from within dialog components
-    const dialogController = new NgxDialogController<O, I>(overlayRef, inputData);
+    const dialogController = new NgxDialogController<OUTPUT, INPUT>(overlayRef, inputData);
     const injector = Injector.create({
       parent: this.injector,
       providers: [

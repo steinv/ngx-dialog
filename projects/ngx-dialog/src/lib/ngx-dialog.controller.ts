@@ -6,10 +6,10 @@ import {OverlayRef} from '@angular/cdk/overlay';
  * Controller class that is injected with each Dialog component.
  * Use this controller to read input data and write output data from your dialog
  */
-export class NgxDialogController<O, I = undefined> {
-  private afterClosedSubject = new Subject<DialogResult<O>>();
+export class NgxDialogController<OUTPUT, INPUT = undefined> {
+  private afterClosedSubject = new Subject<DialogResult<OUTPUT>>();
 
-  constructor(private overlayRef: OverlayRef, public readonly input?: I) {
+  constructor(private overlayRef: OverlayRef, public readonly input?: INPUT) {
     this.input = input;
   }
 
@@ -18,7 +18,7 @@ export class NgxDialogController<O, I = undefined> {
     this.afterClosedSubject.next({result: DialogResolution.DISMISS})
   }
 
-  public confirm(data?: O) {
+  public confirm(data?: OUTPUT) {
     this.overlayRef.dispose();
     this.afterClosedSubject.next({
       result: DialogResolution.CONFIRM,
@@ -30,7 +30,7 @@ export class NgxDialogController<O, I = undefined> {
   /**
    * An Observable that notifies when the overlay has closed
    */
-  public afterClosed(): Observable<DialogResult<O>> {
+  public afterClosed(): Observable<DialogResult<OUTPUT>> {
     return this.afterClosedSubject.asObservable();
   }
 }
