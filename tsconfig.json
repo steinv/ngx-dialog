@@ -11,6 +11,9 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
+    "paths": {
+      "@steinv/*": ["dist/*"]
+    },
     "declaration": false,
     "downlevelIteration": true,
     "experimentalDecorators": true,

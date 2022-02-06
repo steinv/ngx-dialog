@@ -1,0 +1,33 @@
+import { Subject } from 'rxjs';
+import { DialogResolution } from './ngx-dialog.types';
+/**
+ * Controller class that is injected with each Dialog component.
+ * Use this controller to read input data and write output data from your dialog
+ */
+export class NgxDialogController {
+    constructor(overlayRef, input) {
+        this.overlayRef = overlayRef;
+        this.input = input;
+        this.afterClosedSubject = new Subject();
+        this.input = input;
+    }
+    dismiss() {
+        this.overlayRef.dispose();
+        this.afterClosedSubject.next({ result: DialogResolution.DISMISS });
+    }
+    confirm(data) {
+        this.overlayRef.dispose();
+        this.afterClosedSubject.next({
+            result: DialogResolution.CONFIRM,
+            data
+        });
+        this.afterClosedSubject.complete();
+    }
+    /**
+     * An Observable that notifies when the overlay has closed
+     */
+    afterClosed() {
+        return this.afterClosedSubject.asObservable();
+    }
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoibmd4LWRpYWxvZy5jb250cm9sbGVyLmpzIiwic291cmNlUm9vdCI6IiIsInNvdXJjZXMiOlsiLi4vLi4vLi4vLi4vcHJvamVjdHMvbmd4LWRpYWxvZy9zcmMvbGliL25neC1kaWFsb2cuY29udHJvbGxlci50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxPQUFPLEVBQWEsT0FBTyxFQUFDLE1BQU0sTUFBTSxDQUFDO0FBQ3pDLE9BQU8sRUFBQyxnQkFBZ0IsRUFBZSxNQUFNLG9CQUFvQixDQUFDO0FBR2xFOzs7R0FHRztBQUNILE1BQU0sT0FBTyxtQkFBbUI7SUFHOUIsWUFBb0IsVUFBc0IsRUFBa0IsS0FBUztRQUFqRCxlQUFVLEdBQVYsVUFBVSxDQUFZO1FBQWtCLFVBQUssR0FBTCxLQUFLLENBQUk7UUFGN0QsdUJBQWtCLEdBQUcsSUFBSSxPQUFPLEVBQW1CLENBQUM7UUFHMUQsSUFBSSxDQUFDLEtBQUssR0FBRyxLQUFLLENBQUM7SUFDckIsQ0FBQztJQUVNLE9BQU87UUFDWixJQUFJLENBQUMsVUFBVSxDQUFDLE9BQU8sRUFBRSxDQUFDO1FBQzFCLElBQUksQ0FBQyxrQkFBa0IsQ0FBQyxJQUFJLENBQUMsRUFBQyxNQUFNLEVBQUUsZ0JBQWdCLENBQUMsT0FBTyxFQUFDLENBQUMsQ0FBQTtJQUNsRSxDQUFDO0lBRU0sT0FBTyxDQUFDLElBQVE7UUFDckIsSUFBSSxDQUFDLFVBQVUsQ0FBQyxPQUFPLEVBQUUsQ0FBQztRQUMxQixJQUFJLENBQUMsa0JBQWtCLENBQUMsSUFBSSxDQUFDO1lBQzNCLE1BQU0sRUFBRSxnQkFBZ0IsQ0FBQyxPQUFPO1lBQ2hDLElBQUk7U0FDTCxDQUFDLENBQUM7UUFDSCxJQUFJLENBQUMsa0JBQWtCLENBQUMsUUFBUSxFQUFFLENBQUM7SUFDckMsQ0FBQztJQUVEOztPQUVHO0lBQ0ksV0FBVztRQUNoQixPQUFPLElBQUksQ0FBQyxrQkFBa0IsQ0FBQyxZQUFZLEVBQUUsQ0FBQztJQUNoRCxDQUFDO0NBQ0YiLCJzb3VyY2VzQ29udGVudCI6WyJpbXBvcnQge09ic2VydmFibGUsIFN1YmplY3R9IGZyb20gJ3J4anMnO1xyXG5pbXBvcnQge0RpYWxvZ1Jlc29sdXRpb24sIERpYWxvZ1Jlc3VsdH0gZnJvbSAnLi9uZ3gtZGlhbG9nLnR5cGVzJztcclxuaW1wb3J0IHtPdmVybGF5UmVmfSBmcm9tICdAYW5ndWxhci9jZGsvb3ZlcmxheSc7XHJcblxyXG4vKipcclxuICogQ29udHJvbGxlciBjbGFzcyB0aGF0IGlzIGluamVjdGVkIHdpdGggZWFjaCBEaWFsb2cgY29tcG9uZW50LlxyXG4gKiBVc2UgdGhpcyBjb250cm9sbGVyIHRvIHJlYWQgaW5wdXQgZGF0YSBhbmQgd3JpdGUgb3V0cHV0IGRhdGEgZnJvbSB5b3VyIGRpYWxvZ1xyXG4gKi9cclxuZXhwb3J0IGNsYXNzIE5neERpYWxvZ0NvbnRyb2xsZXI8TywgSSA9IHVuZGVmaW5lZD4ge1xyXG4gIHByaXZhdGUgYWZ0ZXJDbG9zZWRTdWJqZWN0ID0gbmV3IFN1YmplY3Q8RGlhbG9nUmVzdWx0PE8+PigpO1xyXG5cclxuICBjb25zdHJ1Y3Rvcihwcml2YXRlIG92ZXJsYXlSZWY6IE92ZXJsYXlSZWYsIHB1YmxpYyByZWFkb25seSBpbnB1dD86IEkpIHtcclxuICAgIHRoaXMuaW5wdXQgPSBpbnB1dDtcclxuICB9XHJcblxyXG4gIHB1YmxpYyBkaXNtaXNzKCk6IHZvaWQge1xyXG4gICAgdGhpcy5vdmVybGF5UmVmLmRpc3Bvc2UoKTtcclxuICAgIHRoaXMuYWZ0ZXJDbG9zZWRTdWJqZWN0Lm5leHQoe3Jlc3VsdDogRGlhbG9nUmVzb2x1dGlvbi5ESVNNSVNTfSlcclxuICB9XHJcblxyXG4gIHB1YmxpYyBjb25maXJtKGRhdGE/OiBPKSB7XHJcbiAgICB0aGlzLm92ZXJsYXlSZWYuZGlzcG9zZSgpO1xyXG4gICAgdGhpcy5hZnRlckNsb3NlZFN1YmplY3QubmV4dCh7XHJcbiAgICAgIHJlc3VsdDogRGlhbG9nUmVzb2x1dGlvbi5DT05GSVJNLFxyXG4gICAgICBkYXRhXHJcbiAgICB9KTtcclxuICAgIHRoaXMuYWZ0ZXJDbG9zZWRTdWJqZWN0LmNvbXBsZXRlKCk7XHJcbiAgfVxyXG5cclxuICAvKipcclxuICAgKiBBbiBPYnNlcnZhYmxlIHRoYXQgbm90aWZpZXMgd2hlbiB0aGUgb3ZlcmxheSBoYXMgY2xvc2VkXHJcbiAgICovXHJcbiAgcHVibGljIGFmdGVyQ2xvc2VkKCk6IE9ic2VydmFibGU8RGlhbG9nUmVzdWx0PE8+PiB7XHJcbiAgICByZXR1cm4gdGhpcy5hZnRlckNsb3NlZFN1YmplY3QuYXNPYnNlcnZhYmxlKCk7XHJcbiAgfVxyXG59XHJcbiJdfQ==

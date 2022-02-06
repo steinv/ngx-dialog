@@ -1,0 +1,6 @@
+<form>
+    <label for="myInput">What's your favorite food?</label>
+    <input #myInput type="text" />
+    <button type="submit" (click)="confirmDialog(myInput.value)">Confirm</button>
+    <button (click)="control.dismiss()">Cancel</button>
+</form>

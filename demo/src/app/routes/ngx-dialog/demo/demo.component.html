@@ -1,0 +1,14 @@
+<h2>Ngx-Dialog demo</h2>
+<p>This page will demonstrate the ngx-dialog</p>
+
+<section>
+    <button (click)="openDialog()">Open simple dialog</button>
+    
+    <p *ngIf="dialogOutput">
+        You wrote: {{dialogOutput}}
+    </p>
+</section>
+
+<section>
+    <button (click)="openInceptionDialog()">Open inception dialog</button>
+</section>

@@ -1,0 +1,17 @@
+@import '@angular/cdk/overlay-prebuilt.css';
+
+.ngx-dialog-backdrop {
+    background-color: rgba(0,0,0,.32)
+}
+
+.ngx-dialog-panel {
+    display: block;
+    padding: 24px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    overflow: auto;
+    outline: 0;
+    box-shadow: 0 11px 15px -7px #0003, 0 24px 38px 3px #00000024, 0 9px 46px 8px #0000001f;
+    background: white;
+    color: #000000de;
+}

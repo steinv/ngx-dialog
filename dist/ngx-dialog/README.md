@@ -1,24 +1,25 @@
-# @steinv/ngx-dialog
+# Ngx-dialog
 
-Angular dialog module to inject dialog component(s) with input and output
+Angular dialog module
+Injects a dialog component with input and output
 
-## [Demo](https://steinv.github.io/ngx-dialog/dist/ngx-dialog)
+## [Demo](https://steinv.github.io/ngx-dialog/dist/demo)
 
 ## Installation
 
-Install Ngx-dialog through npm:
+Install Ngx-dialog:
 
 `npm i -S @steinv/ngx-dialog`
 
 Import the global style scss in your "styles.scss"
 
-```ts
+```
 @import '@steinv/ngx-dialog/assets/styles.scss';
 ```
 
 Add NgxDialogModule import to your app module:
 
-```ts
+```
 import {NgxDialogModule} from '@steinv/ngx-dialog';
 
 ...
@@ -26,7 +27,7 @@ import {NgxDialogModule} from '@steinv/ngx-dialog';
 @NgModule({
   imports: [
     ...
-    NgxDialogModule,
+    NgxDialogModule
     ...
   ],
   ...
@@ -40,9 +41,7 @@ import {NgxDialogModule} from '@steinv/ngx-dialog';
 To create any dialog component implement `NgxDialogViewComponent<OutputInterface, InputInterface>` and add a constructor to inject the `control: NgxDialogController`.
 
 Example
-```ts
-import {NgxDialogController, NgxDialogViewComponent} from '@steinv/ngx-dialog';
-
+```
 export interface MyDialogInput {
     someInput: any;
 }
@@ -56,12 +55,10 @@ export class MyDialogComponent implements NgxDialogViewComponent<MyDialogOutput,
       public readonly control: NgxDialogController<MyDialogOutput, MyDialogInput>
   ) { }
 
-  // This action will close the dialog and return output
   confirm(someOutput: any): void{
       this.control.confirm({someOutput});
   }
 
-  // This action will dismiss the dialog without output
   dismiss(): void {
       this.control.dismiss();
   }
@@ -72,13 +69,7 @@ export class MyDialogComponent implements NgxDialogViewComponent<MyDialogOutput,
 
 Use the NgxDialogService to open a dialog component. 
 
-```ts
-import {NgxDialogService} from '@steinv/ngx-dialog';
-
-...
-
-constructor(private readonly ngxDialogService: NgxDialogService) {}
-
+```
 openMyDialogComponent(): Observable<DialogResult<DialogOutput>> {
     const control = ngxDialogService.open(MyDialogComponent, {someInput});
     return control.afterClosed();
@@ -88,26 +79,26 @@ openMyDialogComponent(): Observable<DialogResult<DialogOutput>> {
 ### Custom config
 
 Add a `OverlayConfig` when opening the dialog to add your own css-selectors or position the dialog differently
-```ts
+```
 /**
-* inject the overlay in the constructor
-* constructor(private readonly overlay: Overlay) {}
-*/ 
-const positionStrategy = this.overlay
+    * inject the overlay in the constructor
+    * constructor(private readonly overlay: Overlay) {}
+    */ 
+    const positionStrategy = this.overlay
     .position()
     .global()
     .centerHorizontally()
     .centerVertically();
 
-// Add your own css classes to the backdrop and dialog-panel
-config: OverlayConfig = {
+    // Add your own css classes to the backdrop and dialog-panel
+    config: OverlayConfig = {
     positionStrategy,
     hasBackdrop: true,
     backdropClass: 'ngx-dialog-backdrop',
     panelClass: 'ngx-dialog-panel',
-}
+    }
 
-ngxDialogService.open(MyDialogComponent, config);
+    ngxDialogService.open(MyDialogComponent, config);
 ```
 
 
