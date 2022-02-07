@@ -1,7 +1,7 @@
 {
   "name": "@steinv/ngx-dialog",
   "description": "Angular dialog module for flexible injection of a dialog with input and output",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Stein Vanmassenhove <stein.vanmassenhove@gmail.com>",
   "license": "MIT",
   "repository": {
@@ -12,6 +12,18 @@
   "bugs": {
     "url": "https://github.com/steinv/ngx-dialog/issues"
   },
+  "keywords": [
+    "ngx",
+    "ngx-dialog",
+    "alert",
+    "notification",
+    "modal",
+    "dialog",
+    "input",
+    "output",
+    "angular",
+    "angular13"
+  ],
   "peerDependencies": {
     "@angular/common": "^13.0.0",
     "@angular/core": "^13.0.0",

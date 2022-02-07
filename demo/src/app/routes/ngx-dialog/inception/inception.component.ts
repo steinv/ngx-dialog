@@ -9,7 +9,7 @@ import { NgxDialogController, NgxDialogService, NgxDialogViewComponent } from '@
 export class InceptionComponent implements NgxDialogViewComponent<void> {
 
   constructor(
-    public control: NgxDialogController<void>,
+    public ngxDialogController: NgxDialogController<void>,
     private dialogService: NgxDialogService,
   ) { }
 

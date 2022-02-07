@@ -37,7 +37,7 @@ import {NgxDialogModule} from '@steinv/ngx-dialog';
 
 ### Dialog component:
 
-To create any dialog component implement `NgxDialogViewComponent<OutputInterface, InputInterface>` and add a constructor to inject the `control: NgxDialogController`.
+To create any dialog component implement `NgxDialogViewComponent<OutputInterface, InputInterface>` and add a constructor to inject the `ngxDialogController: NgxDialogController`.
 
 Example
 ```ts
@@ -53,17 +53,20 @@ export interface MyDialogOutput {
 
 export class MyDialogComponent implements NgxDialogViewComponent<MyDialogOutput, MyDialogInput> {
   constructor(
-      public readonly control: NgxDialogController<MyDialogOutput, MyDialogInput>
-  ) { }
+      public readonly ngxDialogController: NgxDialogController<MyDialogOutput, MyDialogInput>
+  ) {
+      // dismiss the dialog when the backdrop is clicked
+      ngxDialogController.backdropClick().subscribe(() => ngxDialogController.dismiss())
+   }
 
   // This action will close the dialog and return output
   confirm(someOutput: any): void{
-      this.control.confirm({someOutput});
+      this.ngxDialogController.confirm({someOutput});
   }
 
   // This action will dismiss the dialog without output
   dismiss(): void {
-      this.control.dismiss();
+      this.ngxDialogController.dismiss();
   }
 }
 ```
@@ -80,9 +83,24 @@ import {NgxDialogService} from '@steinv/ngx-dialog';
 constructor(private readonly ngxDialogService: NgxDialogService) {}
 
 openMyDialogComponent(): Observable<DialogResult<DialogOutput>> {
-    const control = ngxDialogService.open(MyDialogComponent, {someInput});
-    return control.afterClosed();
+    const ngxDialogController = ngxDialogService.open(MyDialogComponent, {someInput});
+    return ngxDialogController.afterClosed();
 }
+```
+
+### Closing a dialog component
+
+Use the NgxDialogController (either in the dialog itself or from where you opened the dialog) to close a dialog component. 
+
+Example dismiss on backdrop clicks
+
+```ts
+    ngxDialogController.backdropClick().subscribe(() => ngxDialogController.dismiss());
+```
+
+Example dismiss button
+```html
+    <button (click)="ngxDialogController.dismiss()">Close!</button>
 ```
 
 ### Custom config

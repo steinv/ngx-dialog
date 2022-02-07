@@ -25,6 +25,7 @@ class NgxDialogController {
     dismiss() {
         this.overlayRef.dispose();
         this.afterClosedSubject.next({ result: DialogResolution.DISMISS });
+        this.afterClosedSubject.complete();
     }
     confirm(data) {
         this.overlayRef.dispose();
@@ -39,6 +40,18 @@ class NgxDialogController {
      */
     afterClosed() {
         return this.afterClosedSubject.asObservable();
+    }
+    /**
+     * An Observable that notifies when the backdrop was clicked
+     */
+    backdropClick() {
+        return this.overlayRef.backdropClick();
+    }
+    /**
+     * An Observable that notifies the keyboard down events
+     */
+    keydownEvents() {
+        return this.overlayRef.keydownEvents();
     }
 }
 
@@ -97,11 +110,11 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "13.0.3", ngImpor
  * All dialog-components should implement this.
  *
  * Example:
- * export class MyDialogComponent implements DialogComponent<MyOutputInterface, MyInputInterface> {
- *   public constructor(control: DialogController<MyOutputInterface, MyInputInterface>) {}
+ * export class MyDialogComponent implements NgxDialogViewComponent<MyOutputInterface, MyInputInterface> {
+ *   public constructor(ngxDialogController: NgxDialogController<MyOutputInterface, MyInputInterface>) {}
  *
  *   public close(outputData: MyOutputInterface) {
- *     this.control.confirm(outputData);
+ *     this.ngxDialogController.confirm(outputData);
  *   }
  * }
  */

@@ -1,6 +1,6 @@
 <form>
     <label for="myInput">What's your favorite food?</label>
-    <input #myInput type="text" />
+    <input #myInput type="text" [value]="this.ngxDialogController.input?.favorite" />
     <button type="submit" (click)="confirmDialog(myInput.value)">Confirm</button>
-    <button (click)="control.dismiss()">Cancel</button>
+    <button (click)="ngxDialogController.dismiss()">Dismiss</button>
 </form>

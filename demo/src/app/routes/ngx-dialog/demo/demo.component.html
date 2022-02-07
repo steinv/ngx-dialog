@@ -1,14 +1,22 @@
 <h2>Ngx-Dialog demo</h2>
 <p>This page will demonstrate the ngx-dialog</p>
 
-<section>
-    <button (click)="openDialog()">Open simple dialog</button>
+<ul>
+    <li>
+        <p>This dialog accepts input and can return output to the caller. 
+        Dismiss with the dialog button or a backdrop click or the "Esc" key!</p>
+        <input type="text" #inputForDialog placeholder="Input for dialog" />
+        <button (click)="openDialogWithInput(inputForDialog.value)">Open dialog with output</button>
+        
+        <p *ngIf="dialogOutput">
+            You wrote: {{dialogOutput}}
+        </p>
+    </li>
     
-    <p *ngIf="dialogOutput">
-        You wrote: {{dialogOutput}}
-    </p>
-</section>
+    <li>
+        <p>This dialog can open itself on top of the previous dialog</p>
+        <button (click)="openInceptionDialog()">Open inception dialog</button>
+    </li>
+</ul>
 
-<section>
-    <button (click)="openInceptionDialog()">Open inception dialog</button>
-</section>
+

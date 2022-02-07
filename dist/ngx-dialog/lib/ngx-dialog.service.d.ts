@@ -11,10 +11,10 @@ export declare class NgxDialogService {
     private overlay;
     private injector;
     constructor(overlay: Overlay, injector: Injector);
-    open<O, I = undefined>(component: ComponentType<NgxDialogViewComponent<O, I>>): NgxDialogController<O, I>;
-    open<O, I = undefined>(component: ComponentType<NgxDialogViewComponent<O, I>>, inputData: I): NgxDialogController<O, I>;
-    open<O, I = undefined>(component: ComponentType<NgxDialogViewComponent<O, I>>, config: OverlayConfig): NgxDialogController<O, I>;
-    open<O, I = undefined>(component: ComponentType<NgxDialogViewComponent<O, I>>, inputData: I, config: OverlayConfig): NgxDialogController<O, I>;
+    open<OUTPUT, INPUT = undefined>(component: ComponentType<NgxDialogViewComponent<OUTPUT, INPUT>>): NgxDialogController<OUTPUT, INPUT>;
+    open<OUTPUT, INPUT = undefined>(component: ComponentType<NgxDialogViewComponent<OUTPUT, INPUT>>, inputData: INPUT): NgxDialogController<OUTPUT, INPUT>;
+    open<OUTPUT, INPUT = undefined>(component: ComponentType<NgxDialogViewComponent<OUTPUT, INPUT>>, config: OverlayConfig): NgxDialogController<OUTPUT, INPUT>;
+    open<OUTPUT, INPUT = undefined>(component: ComponentType<NgxDialogViewComponent<OUTPUT, INPUT>>, inputData: INPUT, config: OverlayConfig): NgxDialogController<OUTPUT, INPUT>;
     static ɵfac: i0.ɵɵFactoryDeclaration<NgxDialogService, never>;
     static ɵprov: i0.ɵɵInjectableDeclaration<NgxDialogService>;
 }

@@ -1,6 +1,6 @@
-export interface DialogResult<O> {
+export interface DialogResult<OUTPUT> {
     result: DialogResolution;
-    data?: O;
+    data?: OUTPUT;
 }
 export declare enum DialogResolution {
     CONFIRM = 0,

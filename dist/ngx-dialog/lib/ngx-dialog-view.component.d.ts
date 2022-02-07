@@ -3,14 +3,14 @@ import { NgxDialogController } from "./ngx-dialog.controller";
  * All dialog-components should implement this.
  *
  * Example:
- * export class MyDialogComponent implements DialogComponent<MyOutputInterface, MyInputInterface> {
- *   public constructor(control: DialogController<MyOutputInterface, MyInputInterface>) {}
+ * export class MyDialogComponent implements NgxDialogViewComponent<MyOutputInterface, MyInputInterface> {
+ *   public constructor(ngxDialogController: NgxDialogController<MyOutputInterface, MyInputInterface>) {}
  *
  *   public close(outputData: MyOutputInterface) {
- *     this.control.confirm(outputData);
+ *     this.ngxDialogController.confirm(outputData);
  *   }
  * }
  */
-export declare abstract class NgxDialogViewComponent<O, I = undefined> {
-    abstract get control(): NgxDialogController<O, I>;
+export declare abstract class NgxDialogViewComponent<OUTPUT, INPUT = undefined> {
+    abstract get ngxDialogController(): NgxDialogController<OUTPUT, INPUT>;
 }

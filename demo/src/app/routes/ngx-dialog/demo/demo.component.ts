@@ -14,14 +14,13 @@ export class DialogDemoComponent {
   public dialogOutput: string | undefined;
 
   constructor(
-    private readonly dialogService: NgxDialogService
+    private readonly ngxDialogService: NgxDialogService
   ) { }
 
-  openDialog(): void {
-    // Using the dialogService we'll open the dialog component and received a reference control as output.
-    const ctrl = this.dialogService.open(DialogComponent);
-    
-    // the control has an afterClosed() function that returns an observable that can be subscribed to.
+  openDialogWithInput(input: string) {
+    const ctrl = this.ngxDialogService.open(DialogComponent, {favorite: input});
+  
+    // the NgxDialogControl has an afterClosed() function that returns an observable that can be subscribed to.
     ctrl.afterClosed().subscribe(
       (output) => {
         switch (output.result) {
@@ -42,7 +41,8 @@ export class DialogDemoComponent {
     const config: OverlayConfig = {
       
     }
-    this.dialogService.open(InceptionComponent, config);
+    this.ngxDialogService.open(InceptionComponent, config);
   }
+
 
 }

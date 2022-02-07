@@ -42,7 +42,6 @@ export class NgxDialogService {
 
     // Create the overlay with customizable options
     const overlayRef = this.overlay.create(config);
-
     
     // Create injector to be able to reference the DialogController from within dialog components
     const dialogController = new NgxDialogController<OUTPUT, INPUT>(overlayRef, inputData);
