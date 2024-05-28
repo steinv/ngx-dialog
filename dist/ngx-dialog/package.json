@@ -1,7 +1,7 @@
 {
   "name": "@steinv/ngx-dialog",
   "description": "Angular dialog module for flexible injection of a dialog with input and output",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "author": "Stein Vanmassenhove <stein.vanmassenhove@gmail.com>",
   "license": "MIT",
   "repository": {
@@ -21,24 +21,17 @@
     "dialog",
     "input",
     "output",
-    "angular",
-    "angular13",
-    "angular14",
-    "angular15"
+    "angular"
   ],
   "peerDependencies": {
-    "@angular/common": "^13.0.0 || ^14.0.0 ||  ^15.0.0",
-    "@angular/core": "^13.0.0 || ^14.0.0 || ^15.0.0",
-    "@angular/cdk": "^13.0.0 || ^14.0.0 || ^15.0.0"
+    "@angular/common": ">=18.0.0",
+    "@angular/core": ">=18.0.0",
+    "@angular/cdk": ">=18.0.0"
   },
   "dependencies": {
-    "tslib": "^2.3.0"
+    "tslib": "^2.6.0"
   },
-  "module": "fesm2015/steinv-ngx-dialog.mjs",
-  "es2020": "fesm2020/steinv-ngx-dialog.mjs",
-  "esm2020": "esm2020/steinv-ngx-dialog.mjs",
-  "fesm2020": "fesm2020/steinv-ngx-dialog.mjs",
-  "fesm2015": "fesm2015/steinv-ngx-dialog.mjs",
+  "module": "fesm2022/steinv-ngx-dialog.mjs",
   "typings": "index.d.ts",
   "exports": {
     "./package.json": {
@@ -46,11 +39,9 @@
     },
     ".": {
       "types": "./index.d.ts",
-      "esm2020": "./esm2020/steinv-ngx-dialog.mjs",
-      "es2020": "./fesm2020/steinv-ngx-dialog.mjs",
-      "es2015": "./fesm2015/steinv-ngx-dialog.mjs",
-      "node": "./fesm2015/steinv-ngx-dialog.mjs",
-      "default": "./fesm2020/steinv-ngx-dialog.mjs"
+      "esm2022": "./esm2022/steinv-ngx-dialog.mjs",
+      "esm": "./esm2022/steinv-ngx-dialog.mjs",
+      "default": "./fesm2022/steinv-ngx-dialog.mjs"
     }
   },
   "sideEffects": false

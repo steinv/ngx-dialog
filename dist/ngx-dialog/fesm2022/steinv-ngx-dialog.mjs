@@ -99,12 +99,12 @@ class NgxDialogService {
         // return the controller to the caller
         return dialogController;
     }
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.0.0", ngImport: i0, type: NgxDialogService, deps: [{ token: i1.Overlay }, { token: i0.Injector }], target: i0.ɵɵFactoryTarget.Injectable }); }
+    static { this.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "18.0.0", ngImport: i0, type: NgxDialogService }); }
 }
-NgxDialogService.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.0.0", ngImport: i0, type: NgxDialogService, deps: [{ token: i1.Overlay }, { token: i0.Injector }], target: i0.ɵɵFactoryTarget.Injectable });
-NgxDialogService.ɵprov = i0.ɵɵngDeclareInjectable({ minVersion: "12.0.0", version: "15.0.0", ngImport: i0, type: NgxDialogService });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.0.0", ngImport: i0, type: NgxDialogService, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.0.0", ngImport: i0, type: NgxDialogService, decorators: [{
             type: Injectable
-        }], ctorParameters: function () { return [{ type: i1.Overlay }, { type: i0.Injector }]; } });
+        }], ctorParameters: () => [{ type: i1.Overlay }, { type: i0.Injector }] });
 
 /**
  * All dialog-components should implement this.
@@ -122,13 +122,13 @@ class NgxDialogViewComponent {
 }
 
 class NgxDialogModule {
+    static { this.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "18.0.0", ngImport: i0, type: NgxDialogModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule }); }
+    static { this.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "18.0.0", ngImport: i0, type: NgxDialogModule, imports: [OverlayModule] }); }
+    static { this.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "18.0.0", ngImport: i0, type: NgxDialogModule, providers: [
+            NgxDialogService,
+        ], imports: [OverlayModule] }); }
 }
-NgxDialogModule.ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "15.0.0", ngImport: i0, type: NgxDialogModule, deps: [], target: i0.ɵɵFactoryTarget.NgModule });
-NgxDialogModule.ɵmod = i0.ɵɵngDeclareNgModule({ minVersion: "14.0.0", version: "15.0.0", ngImport: i0, type: NgxDialogModule, imports: [OverlayModule] });
-NgxDialogModule.ɵinj = i0.ɵɵngDeclareInjector({ minVersion: "12.0.0", version: "15.0.0", ngImport: i0, type: NgxDialogModule, providers: [
-        NgxDialogService,
-    ], imports: [OverlayModule] });
-i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.0.0", ngImport: i0, type: NgxDialogModule, decorators: [{
+i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "18.0.0", ngImport: i0, type: NgxDialogModule, decorators: [{
             type: NgModule,
             args: [{
                     declarations: [],
@@ -151,5 +151,4 @@ i0.ɵɵngDeclareClassMetadata({ minVersion: "12.0.0", version: "15.0.0", ngImpor
  */
 
 export { DialogResolution, NgxDialogController, NgxDialogModule, NgxDialogService, NgxDialogViewComponent };
-//# sourceMappingURL=steinv-ngx-dialog.mjs.map
 //# sourceMappingURL=steinv-ngx-dialog.mjs.map
