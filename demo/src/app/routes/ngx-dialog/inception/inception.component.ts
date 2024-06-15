@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { NgxDialogController, NgxDialogService, NgxDialogViewComponent } from '@steinv/ngx-dialog';
 
 @Component({
@@ -7,11 +7,8 @@ import { NgxDialogController, NgxDialogService, NgxDialogViewComponent } from '@
   styleUrls: ['./inception.component.scss']
 })
 export class InceptionComponent implements NgxDialogViewComponent<void> {
-
-  constructor(
-    public ngxDialogController: NgxDialogController<void>,
-    private dialogService: NgxDialogService,
-  ) { }
+  public ngxDialogController = inject<NgxDialogController<void>>(NgxDialogController<void>);
+  private dialogService = inject(NgxDialogService);
 
   openDialog(): void {
     this.dialogService.open(InceptionComponent);

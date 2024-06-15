@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, inject } from '@angular/core';
 import { NgxDialogController, NgxDialogViewComponent } from '@steinv/ngx-dialog';
-import { filter, merge } from 'rxjs';
+import { Subject, filter, merge, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-dialog',
@@ -8,18 +8,25 @@ import { filter, merge } from 'rxjs';
   styleUrls: ['./dialog.component.scss']
 })
 // implement the NgxDialogViewComponent interface with your output and input interface. In this example there's no input
-export class DialogComponent implements NgxDialogViewComponent<DialogOutput, DialogInput> {
+export class DialogComponent implements NgxDialogViewComponent<DialogOutput, DialogInput>, OnDestroy {
 
-  // inject the ngxDialogController on the constructor of your NgxDialogViewComponent
-  constructor(
-    public readonly ngxDialogController: NgxDialogController<DialogOutput, DialogInput>
-  ) { 
+  public readonly ngxDialogController = inject<NgxDialogController<DialogOutput, DialogInput>>(NgxDialogController<DialogOutput, DialogInput>);
+  protected readonly destroy$ = new Subject<void>();
+
+  public constructor() {
     // dismiss dialog when clicking on the backdrop or pressing Esc-key
     merge(
-      ngxDialogController.backdropClick(),
-      ngxDialogController.keydownEvents().pipe(filter(({key}) => key === 'Escape'))
+      this.ngxDialogController.backdropClick(),
+      this.ngxDialogController.keydownEvents().pipe(filter(({ key }) => key === 'Escape'))
+    ).pipe(
+      takeUntil(this.destroy$)
     )
-    .subscribe(() => ngxDialogController.dismiss())
+      .subscribe(() => this.ngxDialogController.dismiss())
+  }
+
+  public ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   confirmDialog(input: string) {

@@ -1,6 +1,5 @@
 import { OverlayConfig } from '@angular/cdk/overlay';
-import { Overlay, ComponentType } from '@angular/cdk/overlay';
-import { Injector } from '@angular/core';
+import { ComponentType } from '@angular/cdk/overlay';
 import { NgxDialogViewComponent } from './ngx-dialog-view.component';
 import { NgxDialogController } from './ngx-dialog.controller';
 import * as i0 from "@angular/core";
@@ -10,7 +9,6 @@ import * as i0 from "@angular/core";
 export declare class NgxDialogService {
     private overlay;
     private injector;
-    constructor(overlay: Overlay, injector: Injector);
     open<OUTPUT, INPUT = undefined>(component: ComponentType<NgxDialogViewComponent<OUTPUT, INPUT>>): NgxDialogController<OUTPUT, INPUT>;
     open<OUTPUT, INPUT = undefined>(component: ComponentType<NgxDialogViewComponent<OUTPUT, INPUT>>, inputData: INPUT): NgxDialogController<OUTPUT, INPUT>;
     open<OUTPUT, INPUT = undefined>(component: ComponentType<NgxDialogViewComponent<OUTPUT, INPUT>>, config: OverlayConfig): NgxDialogController<OUTPUT, INPUT>;
